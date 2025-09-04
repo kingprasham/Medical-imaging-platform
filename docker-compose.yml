@@ -1,0 +1,87 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: medical_imaging
+      POSTGRES_USER: meduser
+      POSTGRES_PASSWORD: medpass123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - medical_network
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:7
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: meduser
+      MONGO_INITDB_ROOT_PASSWORD: medpass123
+      MONGO_INITDB_DATABASE: medical_imaging
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - medical_network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - medical_network
+
+  # Orthanc PACS Server with plugins
+  orthanc:
+    image: orthancteam/orthanc:24.3.5
+    ports:
+      - "4242:4242"
+      - "8042:8042"
+    volumes:
+      - orthanc_data:/var/lib/orthanc/db
+      - ./orthanc.json:/etc/orthanc/orthanc.json:ro
+    environment:
+      # Enable verbose logging for debugging
+      - ORTHANC_LOG_LEVEL=INFO
+      # Ensure DICOMweb plugin is loaded
+      - ORTHANC__DICOM_WEB__ENABLE=true
+      # Enable Stone Web Viewer
+      - ORTHANC__STONE_WEB_VIEWER__ENABLE=true
+      # Basic authentication
+      - ORTHANC__AUTHENTICATION_ENABLED=false
+      - ORTHANC__REGISTERED_USERS={"orthanc":"orthanc"}
+      - ORTHANC__REMOTE_ACCESS_ALLOWED=true
+    networks:
+      - medical_network
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  # NGINX for serving and proxying
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - medical_network
+    depends_on:
+      - orthanc
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mongodb_data:
+  redis_data:
+  orthanc_data:
+
+networks:
+  medical_network:
+    driver: bridge

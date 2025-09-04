@@ -1,0 +1,138 @@
+/* DicomUpload.css */
+
+.upload-zone {
+  border: 2px dashed #e1e8ed;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+  position: relative;
+  background: #f8f9fa;
+}
+
+.upload-zone.drag-over {
+  border-color: #3498db;
+  background: rgba(52, 152, 219, 0.05);
+}
+
+.upload-content {
+  pointer-events: none;
+}
+
+.upload-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.upload-zone h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.upload-zone p {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.file-list {
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(52, 152, 219, 0.05);
+  border-radius: 8px;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.file-item:last-child {
+  border-bottom: none;
+}
+
+.file-name {
+  font-weight: 500;
+}
+
+.file-size {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.upload-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.upload-results {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.result-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.result-item.success {
+  background: rgba(39, 174, 96, 0.1);
+  border: 1px solid rgba(39, 174, 96, 0.2);
+}
+
+.result-item.error {
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.result-icon {
+  margin-right: 15px;
+  font-size: 16px;
+}
+
+.result-details {
+  flex: 1;
+}
+
+.result-filename {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.result-success {
+  color: #27ae60;
+  font-size: 14px;
+}
+
+.result-error {
+  color: #e74c3c;
+  font-size: 14px;
+}
+
+.instance-id {
+  display: block;
+  font-size: 12px;
+  color: #7f8c8d;
+  margin-top: 3px;
+}

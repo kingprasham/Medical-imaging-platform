@@ -1,0 +1,150 @@
+/* DicomViewer.css */
+
+.dicom-viewer {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.study-info {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-item label {
+  font-weight: bold;
+  color: #2c5aa0;
+  font-size: 0.9em;
+}
+
+.info-item span {
+  color: #333;
+  font-size: 1.1em;
+}
+
+.viewer-options {
+  margin-bottom: 30px;
+}
+
+.viewer-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.viewer-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  border: 2px solid #e1e8ed;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.viewer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.orthanc-btn:hover {
+  border-color: #4CAF50;
+  background: linear-gradient(135deg, #f8fff8 0%, #e8f5e8 100%);
+}
+
+.weasis-btn:hover {
+  border-color: #2196F3;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e1f3ff 100%);
+}
+
+.cornerstone-btn:hover {
+  border-color: #FF9800;
+  background: linear-gradient(135deg, #fff8f0 0%, #ffe8d1 100%);
+}
+
+.viewer-btn small {
+  margin-top: 8px;
+  font-size: 0.85em;
+  font-weight: normal;
+  color: #666;
+  text-align: center;
+}
+
+.embedded-viewer {
+  margin-top: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.embedded-viewer h3 {
+  background: #2c5aa0;
+  color: white;
+  margin: 0;
+  padding: 15px;
+}
+
+.viewer-instructions {
+  background: #e8f4f8;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.viewer-instructions h4 {
+  margin-bottom: 15px;
+  color: #2c5aa0;
+}
+
+.viewer-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.viewer-instructions li {
+  margin-bottom: 8px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2c5aa0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.viewer-error {
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+.viewer-error h3 {
+  color: #e74c3c; /* Red color for error heading */
+  margin-bottom: 15px;
+}

@@ -1,0 +1,16 @@
+{
+  "Name": "Medical Imaging PACS",
+  "HttpPort": 8042,
+  "DicomPort": 4242,
+  "HttpAllowedOrigins" : [ "http://localhost:3000" ],
+  "RemoteAccessAllowed": true,
+  "AuthenticationEnabled": false,
+  "DicomWeb": {
+    "Enable": true,
+    "Root": "/dicom-web/"
+  },
+  "Weasis": {
+    "Enable": true,
+    "Servlet": "weasis-pacs-connector"
+  }
+}

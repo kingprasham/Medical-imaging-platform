@@ -1,0 +1,100 @@
+{
+  "Name": "Medical Imaging PACS",
+  "DicomPort": 4242,
+  "HttpPort": 8042,
+  "PostgreSQLPlugin": {
+    "EnableIndex": true,
+    "EnableStorage": false,
+    "Host": "postgres",
+    "Port": 5432,
+    "Database": "medical_imaging",
+    "Username": "meduser",
+    "Password": "medpass123"
+  },
+  "RemoteAccessAllowed": true,
+  "AuthenticationEnabled": false,
+  "RegisteredUsers": {
+    "orthanc": "orthanc"
+  },
+  "DicomWeb": {
+    "Enable": true,
+    "Root": "/dicom-web/",
+    "EnableMetadata": true,
+    "StudiesMetadata": "MainDicomTags",
+    "SeriesMetadata": "MainDicomTags"
+  },
+  "Plugins": [
+    "/usr/share/orthanc/plugins/libOrthancDicomWeb.so",
+    "/usr/share/orthanc/plugins/libOrthancPostgreSQLIndex.so",
+    "/usr/share/orthanc/plugins/libOrthancWebViewer.so"
+  ],
+  "StoneWebViewer": {
+    "Enable": true
+  },
+  "Worklists": {
+    "Enable": false
+  },
+  "DicomModalities": {},
+  "OrthancPeers": {},
+  "HttpTimeout": 60,
+  "MaximumPatientCount": 0,
+  "MaximumStorageSize": 0,
+  "StorageAccessOnFind": "Always",
+  "DicomAssociationCloseDelay": 5,
+  "QueryRetrieveSize": 100,
+  "CaseSensitivePN": false,
+  "LoadPrivateDictionary": true,
+  "Dictionary": {},
+  "SynchronousC-Move": true,
+  "JobsHistorySize": 10,
+  "SaveJobs": true,
+  "OverwriteInstances": false,
+  "MainDicomTags": {
+    "Patient": [
+      "PatientID",
+      "PatientName",
+      "PatientBirthDate",
+      "PatientSex"
+    ],
+    "Study": [
+      "StudyDate",
+      "StudyTime", 
+      "StudyID",
+      "StudyInstanceUID",
+      "StudyDescription",
+      "AccessionNumber"
+    ],
+    "Series": [
+      "Modality",
+      "SeriesDate",
+      "SeriesTime",
+      "SeriesNumber",
+      "SeriesInstanceUID",
+      "SeriesDescription"
+    ],
+    "Instance": [
+      "ImageType",
+      "SOPInstanceUID",
+      "InstanceNumber",
+      "ImagePositionPatient",
+      "ImageOrientationPatient"
+    ]
+  },
+  "ExtraMainDicomTags": {
+    "Patient": [],
+    "Study": [],
+    "Series": [],
+    "Instance": []
+  },
+  "DefaultEncoding": "Latin1",
+  "DeflatedTransferSyntaxAccepted": true,
+  "JpegTransferSyntaxAccepted": true,
+  "Jpeg2000TransferSyntaxAccepted": true,
+  "JpegLosslessTransferSyntaxAccepted": true,
+  "JpipTransferSyntaxAccepted": true,
+  "Mpeg2TransferSyntaxAccepted": true,
+  "RleTransferSyntaxAccepted": true,
+  "UnknownSopClassAccepted": false,
+  "DicomScuTimeout": 10,
+  "DicomScuPreferredTransferSyntax": "1.2.840.10008.1.2.1"
+}
